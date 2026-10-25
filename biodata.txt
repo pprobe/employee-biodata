@@ -1,0 +1,3 @@
+probe | 22 | budimulia | nganggur
+a | 22 | aw | babi
+asu | 22 | aaaaa | awd
