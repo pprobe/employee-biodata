@@ -2,6 +2,11 @@ import os
 
 daftar_pegawai = []
 
+def cari_pegawai(nama):
+    for pegawai in daftar_pegawai:
+        if pegawai["nama"].lower() == nama.lower():
+            return pegawai
+    return None 
 def validasi_input(pesan):
     while True:
         try:
@@ -28,7 +33,15 @@ while True:
     daftar_pegawai.append(pegawai)
     simpan_pegawai(pegawai)
     lanjut = input("Tambah pegawai lagi? (y/n): ")
-    if lanjut.lower() != "y":
+    if lanjut.lower() == "n":
         break
+        
 
-print(daftar_pegawai)
+cari = input("Cari nama pegawai: ")
+hasil = cari_pegawai(cari)
+
+if hasil:
+    print(hasil)
+else:
+    print("Pegawai tidak ditemukan.")
+
