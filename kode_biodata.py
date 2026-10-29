@@ -2,6 +2,13 @@ import os
 
 daftar_pegawai = []
 
+def tampilkan_biodata():
+    if not os.path.exists("biodata.txt"):
+        print("belum ada data pegawai")
+        return
+    with open("biodata.txt","r") as f:
+        print(f.read())
+
 def cari_pegawai(nama):
     for pegawai in daftar_pegawai:
         if pegawai["nama"].lower() == nama.lower():
@@ -28,12 +35,13 @@ def simpan_pegawai(pegawai):
     with open("biodata.txt", "a") as f:
         f.write(f"{pegawai['nama']} | {pegawai['umur']} | {pegawai['alamat']} | {pegawai['pekerjaan']}\n")
 
+tampilkan_biodata()
 while True:
     pegawai = input_pegawai()
     daftar_pegawai.append(pegawai)
     simpan_pegawai(pegawai)
     lanjut = input("Tambah pegawai lagi? (y/n): ")
-    if lanjut.lower() == "n":
+    if lanjut.lower() != "y":
         break
         
 
