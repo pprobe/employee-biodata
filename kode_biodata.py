@@ -35,7 +35,22 @@ def simpan_pegawai(pegawai):
     with open("biodata.txt", "a") as f:
         f.write(f"{pegawai['nama']} | {pegawai['umur']} | {pegawai['alamat']} | {pegawai['pekerjaan']}\n")
 
+def muat_biodata():
+    if not os.path.exists("biodata.txt"):
+        return
+    with open("biodata.txt", "r") as f:
+        for baris in f:
+            bagian = baris.strip().split(" | ")
+            if len(bagian) == 4:
+                daftar_pegawai.append({
+                    "nama": bagian[0],
+                    "umur": int(bagian[1]),
+                    "alamat": bagian[2],
+                    "pekerjaan": bagian[3],
+                })
+
 tampilkan_biodata()
+muat_biodata()
 while True:
     pegawai = input_pegawai()
     daftar_pegawai.append(pegawai)
